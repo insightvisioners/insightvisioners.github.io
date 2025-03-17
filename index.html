@@ -238,6 +238,79 @@
         </div>
     </section>
 
+    <!-- Add this section below your services section -->
+<section id="work" class="py-20 bg-gray-50 px-6">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Our Projects</h2>
+        
+        <!-- Project Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-xl" data-aos="zoom-in">
+                <img 
+                    src="images/Project1.png" 
+                    alt="E-commerce Website Project"
+                    class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-105"
+                >
+                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
+                    <div class="text-center text-white">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                        <p class="text-sm">React, Node.js, MongoDB</p>
+                        <a href="images/Project1.png" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="group relative overflow-hidden rounded-lg shadow-xl" data-aos="zoom-in">
+                <img 
+                    src="images/Project2.png" 
+                    alt="Mobile App Dashboard"
+                    class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-105"
+                >
+                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
+                    <div class="text-center text-white">
+                        <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
+                        <p class="text-sm">Android, Java, Firebase</p>
+                        <a href="images/Project2.png" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
+                    </div>
+                </div>
+            </div>
+            <div class="group relative overflow-hidden rounded-lg shadow-xl" data-aos="zoom-in">
+                <img 
+                    src="images/Project3.png" 
+                    alt="Mobile App Dashboard"
+                    class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-105"
+                >
+                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
+                    <div class="text-center text-white">
+                        <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
+                        <p class="text-sm">Android, Java, Firebase</p>
+                        <a href="images/Project3.png" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more project items as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Add Lightbox CSS & JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
+
+<script>
+    // Initialize light gallery
+    document.addEventListener('DOMContentLoaded', () => {
+        lightGallery(document.querySelectorAll('[data-lightbox="projects"]'), {
+            selector: 'this',
+            download: false,
+            zoom: true
+        });
+    });
+</script>
+
     <!-- Contact Form -->
     <section id="contact" class="py-20 px-6">
         <div class="container mx-auto max-w-2xl">
