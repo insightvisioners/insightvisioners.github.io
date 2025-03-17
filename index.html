@@ -104,11 +104,20 @@
     <!-- 3D Canvas Container -->
     <div id="threejs-container"></div>
 
-    <!-- Page Content -->
     <nav class="fixed w-full bg-white shadow-lg z-50">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="#" class="text-2xl font-bold text-indigo-600">Insight Visioners</a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
                     <a href="#home" class="hover:text-indigo-600 transition-colors">Home</a>
                     <a href="#services" class="hover:text-indigo-600 transition-colors">Services</a>
@@ -116,8 +125,40 @@
                     <a href="#contact" class="hover:text-indigo-600 transition-colors">Contact</a>
                 </div>
             </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden absolute top-16 left-0 w-full bg-white shadow-lg py-2">
+                <a href="#home" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+                <a href="#services" class="block px-4 py-2 hover:bg-gray-100">Services</a>
+                <a href="#work" class="block px-4 py-2 hover:bg-gray-100">Work</a>
+                <a href="#contact" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+            </div>
         </div>
     </nav>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
 
     <!-- Rest of your existing content remains the same -->
     <section id="home" class="pt-32 pb-20 px-6">
@@ -134,22 +175,23 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 class="bg-indigo-600 text-white px-8 py-3 rounded-full hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105">
-                Let's Work Together
+                Let's Make Your Dream True
             </a>
             
             <!-- Stats -->
-            <div class="mt-16 grid grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="p-4 bg-white rounded-lg shadow-md">
-                    <h3 class="text-3xl font-bold text-indigo-600">50+</h3>
-                    <p class="text-gray-600">Projects Completed</p>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-2xl md:max-w-4xl mx-auto px-4 md:px-0">
+                <div class="p-3 md:p-4 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl md:text-3xl font-bold text-indigo-600">50+</h3>
+                    <p class="text-sm md:text-base text-gray-600">Projects Completed</p>
                 </div>
-                <div class="p-4 bg-white rounded-lg shadow-md">
-                    <h3 class="text-3xl font-bold text-indigo-600">98%</h3>
-                    <p class="text-gray-600">Client Satisfaction</p>
+                <div class="p-3 md:p-4 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl md:text-3xl font-bold text-indigo-600">98%</h3>
+                    <p class="text-sm md:text-base text-gray-600">Client Satisfaction</p>
                 </div>
-                <div class="p-4 bg-white rounded-lg shadow-md">
-                    <h3 class="text-3xl font-bold text-indigo-600">5+</h3>
-                    <p class="text-gray-600">Years Experience</p>
+                <div class="p-3 md:p-4 bg-white rounded-lg shadow-md text-center">
+                    <h3 class="text-2xl md:text-3xl font-bold text-indigo-600">5+</h3>
+                    <p class="text-sm md:text-base text-gray-600">Years Experience</p>
                 </div>
             </div>
         </div>
@@ -158,7 +200,7 @@
     <!-- Services Section -->
     <section id="services" class="py-20 bg-white px-6">
         <div class="container mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">What I Offer</h2>
+            <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">What We Deliver</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service Card 1 -->
                 <div class="p-6 bg-gray-100 rounded-lg hover:shadow-xl transition-all duration-300" data-aos="zoom-in">
@@ -255,7 +297,7 @@
                 <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
                     <div class="text-center text-white">
                         <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
-                        <p class="text-sm">React, Node.js, MongoDB</p>
+                        <p class="text-sm">React, Node.js, MySql</p>
                         <a href="images/Project1.png" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
                     </div>
                 </div>
@@ -270,8 +312,8 @@
                 >
                 <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
                     <div class="text-center text-white">
-                        <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
-                        <p class="text-sm">Android, Java, Firebase</p>
+                        <h3 class="text-xl font-bold mb-2">AI Based Evaluation System</h3>
+                        <p class="text-sm">OCR,Java,Open AI</p>
                         <a href="images/Project2.png" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
                     </div>
                 </div>
@@ -285,8 +327,23 @@
                 <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
                     <div class="text-center text-white">
                         <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
-                        <p class="text-sm">Android, Java, Firebase</p>
+                        <p class="text-sm">Sales Dashboard</p>
                         <a href="images/Project3.png" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative overflow-hidden rounded-lg shadow-xl" data-aos="zoom-in">
+                <img 
+                    src="images/Project5.jpg" 
+                    alt="Mobile App Dashboard"
+                    class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-105"
+                >
+                <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6">
+                    <div class="text-center text-white">
+                        <h3 class="text-xl font-bold mb-2">Career Guru</h3>
+                        <p class="text-sm">Android,Firebase,Java</p>
+                        <a href="images/Project5.jpg" class="mt-4 inline-block px-4 py-2 bg-indigo-600 rounded hover:bg-indigo-700 text-white" data-lightbox="projects">View Fullscreen</a>
                     </div>
                 </div>
             </div>
@@ -465,4 +522,73 @@
         }, 200);
     </script>
 </body>
+    <!-- Add this before closing </body> tag -->
+<footer class="bg-gray-800 text-gray-300 py-12 mt-20">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Contact Details -->
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold text-white mb-4">Contact Us</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <i class="fas fa-envelope mr-2"></i>
+                        <a href="mailto:insightvisioners@gmail.com" class="hover:text-indigo-400 transition-colors">
+                            insightvisioners@gmail.com
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone mr-2"></i>
+                        +91 8446089293 -Marketing Director
+                    </li>
+                    <li>
+                        <i class="fas fa-phone mr-2"></i>
+                        +91 8788430290 -Business Development Manager
+                    </li>
+                    <li>
+                        <i class="fas fa-phone mr-2"></i>
+                        +91 7774911611 -Social Media Manager
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="text-center">
+                <h3 class="text-xl font-bold text-white mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="hover:text-indigo-400 transition-colors">Home</a></li>
+                    <li><a href="#services" class="hover:text-indigo-400 transition-colors">Services</a></li>
+                    <li><a href="#work" class="hover:text-indigo-400 transition-colors">Work</a></li>
+                    <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div class="text-center md:text-right">
+                <h3 class="text-xl font-bold text-white mb-4">Follow Us</h3>
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="https://www.instagram.com/_insight_visioners?igsh=YjhreTQ0NnFjZ2tj" target="_blank" rel="noopener noreferrer" 
+                       class="text-2xl hover:text-indigo-400 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-2xl hover:text-indigo-400 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-2xl hover:text-indigo-400 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p>
+                &copy; 2025 Insight Visioners. All rights reserved.
+            </p>
+            <p class="mt-2 text-sm text-gray-500">
+                Crafted with <i class="fas fa-heart text-red-500"></i> by Insight Visioners
+            </p>
+        </div>
+    </div>
+</footer>
 </html>
